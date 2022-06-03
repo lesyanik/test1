@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Добавить клиента
+{% endblock %}
+
+{% block html_body %}
+    <div class="container mt-5 justify-content-center">
+        <h1>Добавить клиента</h1><br>
+        <form method="post">
+            <input type="text" name="client_name" id="client_name" class="form-control" placeholder="Введите Фамилию Имя Отчество"><br>
+            <input type="text" name="client_phone" id="client_phone" class="form-control" placeholder="Введите номер телефона"><br>
+            <input type="text" name="client_code" id="client_code" class="form-control" placeholder="Введите паспортные данные"><br>
+            <input type="submit" class="btn btn-info text-black" value="Добавить">
+        </form>
+    </div>
+{% endblock %}

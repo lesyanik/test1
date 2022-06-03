@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Брони
+{% endblock %}
+
+{% block html_body %}
+<div class="container mt-5 ">
+    <h1>Брони</h1><br>
+
+    {%  if orders|length > 0 %}
+        {% for order in orders %}
+            <div class="alert alert-info">
+                <h2>Бронь №{{ order.order_id }}</h2>
+            <a href="/orders-list/{{ order.order_id }}/detail" class="btn btn-info">Детальнее</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У нас пока еще нет заказов</p>
+    {% endif %}
+</div>
+{% endblock %}

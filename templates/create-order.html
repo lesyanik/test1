@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Создание брони
+{% endblock %}
+
+{% block html_body %}
+    <div class="container mt-5 ">
+        <h1>Создание брони</h1><br>
+
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 bg-info">
+                        <h4 class="my-0 fw-normal">Новая бронь</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <select name="client_id" class="form-select" aria-label="Default select example">
+                                <option selected>Клиенты</option>
+                                {% for client in clients %}
+                                        <option value="{{ client.client_id }}">
+                                            {{ client.name }} {{ client.code }}
+                                        </option>
+                                {% endfor %}
+                            </select>
+                            <br>
+                            <select name="auto_id" class="form-select" aria-label="Default select example">
+                                <option selected>Туры</option>
+                                {% for auto in autos %}
+                                        <option value="{{ auto.auto_id }}">
+                                            {{ auto.name }} {{ auto.code }}
+                                        </option>
+                                {% endfor %}
+                            </select>
+                            <br>
+                            <input type="submit" class="w-90 btn btn-lg btn-info text-black" value="Добавить">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

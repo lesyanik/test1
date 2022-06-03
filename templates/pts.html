@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    ПТС
+{% endblock %}
+
+{% block html_body %}
+    <div class="container mt-5">
+        <h1>ПТС</h1><br>
+
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            {% for auto in added_autos %}
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">ПТС</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info">
+                                <p>Владелец: {{ client.name }} {{ client.code }}</p>
+                                <p>Наименование авто: {{ auto.name }}</p>
+                                <p>Код авто: {{ auto.code }}</p>
+                                <p>Производитель: {{ auto.manufacturer }}</p>
+                                <p><b>Дата приобретения: {{ sale.sale_date }}</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

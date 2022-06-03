@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Доступные туры
+{% endblock %}
+
+{% block html_body %}
+<div class="container mt-5">
+    <h1>Доступные туры</h1><br>
+
+    {%  if autos|length > 0 %}
+        {% for auto in autos %}
+            <div class="alert alert-info">
+                <h2>{{ auto.name }}</h2>
+                <p>{{ auto.price }}</p>
+                <p><b>{{ auto.code }}</b></p>
+            <a href="/autos-list/{{ auto.auto_id }}/change" class="btn btn-info">Редактировать</a>
+            <a href="/autos-list/{{ auto.auto_id }}/delete" class="btn">Удалить</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>В каталоге пока еще ничего нет</p>
+    {% endif %}
+</div>
+{% endblock %}

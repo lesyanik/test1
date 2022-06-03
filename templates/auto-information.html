@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    {{ auto.name}}
+{% endblock %}
+
+{% block html_body %}
+    <div class="container mt-5">
+        <div class="alert alert-info">
+            <h2>{{ auto.name }}</h2>
+            <p>{{ auto.price }}</p>
+            <p><b>{{ auto.code }}</b></p>
+            <p><b>{{ auto.manufacturer }}</b></p>
+            <a href="/clients-list/{{ auto.auto_id }}/delete" class="btn btn-danger">Удалить</a>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Изменить данные</h1><br>
+        <form method="post">
+            <input type="text" name="auto_name" id="auto_name" class="form-control" value="{{ auto.name }}" placeholder="Введите название тура"><br>
+            <input type="text" name="auto_price" id="auto_price" class="form-control" value="{{ auto.price }}" placeholder="Введите цену"><br>
+            <input type="text" name="auto_code" id="auto_code" class="form-control" value="{{ auto.code }}" placeholder="Введите количество дней"><br>
+            <input type="text" name="auto_manufacturer" id="auto_manufacturer" class="form-control" value="{{ auto.manufacturer }}" placeholder="Введите код тура"><br>
+
+            <input type="submit" class="btn btn-success" value="Изменить">
+        </form>
+    </div>
+{% endblock %}

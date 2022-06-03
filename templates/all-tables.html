@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Брони
+{% endblock %}
+
+{% block html_body %}
+    <div class="container mt-5">
+        <h1>Брони</h1>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Брони</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if orders|length > 0 %}
+                            {% for order in orders %}
+                                <div class="alert alert-info">
+                                    <h2>Заказ №{{ order.order_id }}</h2>
+                                    <a href="/orders-list/{{ order.order_id }}/detail" class="btn btn-warning">Детальнее</a>
+                                    <a href="/orders-list/{{ order.order_id }}/delete" class="btn">Удалить</a>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>У нас пока еще нет заказов</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Доступные туры</h4>
+                    </div>
+                    <div class="card-body">
+                        {%  if autos|length > 0 %}
+                            {% for auto in autos %}
+                                <div class="alert alert-info">
+                                    <h2>{{ auto.auto_id }}. {{ auto.name }}</h2>
+                                    <p>{{ auto.price }}</p>
+                                    <p><b>{{ auto.code }}</b></p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>В каталоге пока еще ничего нет</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Клиенты</h4>
+                    </div>
+                    <div class="card-body">
+                        {%  if clients|length > 0 %}
+                            {% for client in clients %}
+                                <div class="alert alert-info">
+                                    <h2>{{ client.client_id }}. {{ client.name }}</h2>
+                                    <p>Телефон: {{ client.phone }}</p>
+                                    <p><b>{{ client.code }}</b></p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>У нас пока еще нет клиентов</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Брони</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if sales|length > 0 %}
+                            {% for sale in sales %}
+                                <div class="alert alert-info">
+                                    <h2>Продажа №{{ sale.sale_id }}</h2>
+                                    <p>Сумма: {{ sale.sale_cost }}</p>
+                                    <p><b>{{ sale.sale_date }}</b></p>
+                                    <p><b>№ заказа:{{ sale.order_id }}</b></p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>У нас пока еще нет продаж</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Sale Entries</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if sale_entries|length > 0 %}
+                            {% for entry in sale_entries %}
+                                <div class="alert alert-info">
+                                    <h2>Entry №{{ entry.sale_entry_id }}</h2>
+                                    <p>Продажа №{{ entry.sale_id }}</p>
+                                    <p><b>Авто №{{ entry.auto_id }}</b></p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>У нас пока еще нет продаж</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Order Entries</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if order_entries|length > 0 %}
+                            {% for entry in order_entries %}
+                                <div class="alert alert-info">
+                                    <h2>Entry №{{ entry.order_entry_id }}</h2>
+                                    <p>Заказ №{{ entry.order_id }}</p>
+                                    <p><b>Авто №{{ entry.auto_id }}</b></p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>В заказах нет дополнительных автомобилей</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

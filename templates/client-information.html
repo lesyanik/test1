@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    {{ client.name}}
+{% endblock %}
+
+{% block html_body %}
+    <div class="container mt-5">
+        <div class="alert alert-info">
+            <h2>{{ client.name }}</h2>
+            <p>{{ client.phone }}</p>
+            <p><b>{{ client.code }}</b></p>
+            <a href="/clients-list/{{ client.client_id }}/delete" class="btn btn-danger">Удалить</a>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Изменить данные</h1><br>
+        <form method="post">
+            <input type="text" name="client_name" id="client_name" class="form-control" value="{{ client.name }}" placeholder="Введите Фамилию Имя Отчество"><br>
+            <input type="text" name="client_phone" id="client_phone" class="form-control" value="{{ client.phone }}" placeholder="Введите номер телефона"><br>
+            <input type="text" name="client_code" id="client_code" class="form-control" value="{{ client.code }}" placeholder="Введите паспортные данные"><br>
+            <input type="submit" class="btn btn-success" value="Изменить">
+        </form>
+    </div>
+{% endblock %}

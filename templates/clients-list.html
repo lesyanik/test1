@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Клианты
+{% endblock %}
+
+{% block html_body %}
+<div class="container mt-5">
+    <h1>Клиенты</h1><br>
+
+    {%  if clients|length > 0 %}
+        {% for client in clients %}
+            <div class="alert alert-info">
+                <h2>{{ client.name }}</h2>
+                <p>{{ client.phone }}</p>
+                <p><b>{{ client.code }}</b></p>
+            <a href="/clients-list/{{ client.client_id }}/change" class="btn btn-info">Редактировать</a>
+            <a href="/clients-list/{{ client.client_id }}/delete" class="btn">Удалить</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У нас пока еще нет клиентов</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Добавить новый тур
+{% endblock %}
+
+{% block html_body %}
+    <div class="container mt-5 justify-content-center">
+        <h1>Добавить новый тур</h1><br>
+        <form method="post">
+            <input type="text" name="auto_name" id="auto_name" class="form-control" placeholder="Введите название тура"><br>
+            <input type="text" name="auto_price" id="auto_price" class="form-control" placeholder="Введите цену"><br>
+            <input type="text" name="auto_code" id="auto_code" class="form-control" placeholder="Введите количество дней"><br>
+            <input type="text" name="auto_manufacturer" id="auto_manufacturer" class="form-control" placeholder="Введите код тура"><br>
+            <input type="submit" class="btn btn-info text-black" value="Добавить">
+        </form>
+    </div>
+{% endblock %}

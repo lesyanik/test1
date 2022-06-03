@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Бронь {{ order.order_id }}
+{% endblock %}
+
+{% block html_body %}
+    <div class="container mt-5">
+        <h1>Бронь №{{ order.order_id }}  </h1>
+        {% if completed %}
+            <p><b></b></p>
+        {% else %}
+            <a href="/complete-order/{{ order.order_id }}" class="btn btn-success">Завершить</a>
+            <a href="/orders-list/{{ order.order_id }}/delete" class="btn btn-danger">Удалить заказ</a>
+        {% endif %}
+        <br>
+        <br>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm ">
+                    <div class="card-header py-3 bg-info">
+                        <h4 class="my-0 fw-normal">Клиент</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <h2>ФИО: {{ client.name }}</h2>
+                            <p>Номер телефона: {{ client.phone }}</p>
+                            <p><b>Паспортные данные: {{ client.code }}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm ">
+                    <div class="card-header py-3 bg-info">
+                        <h4 class="my-0 fw-normal">Тур</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <h2>Название тура: {{ auto.name }}</h2>
+                            <p>Цена: {{ auto.price }}</p>
+                            <p><b>Количество дней: {{ auto.code }}</b></p>
+                            <p><b>Код тура: {{ auto.manufacturer }}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% if not completed %}
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Добавление автомобиля к заказу</h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="post">
+                                <select name="auto_id" class="form-select" aria-label="Default select example">
+                                    <option selected>Автомобили</option>
+                                    {% for el in autos %}
+                                        <option value="{{ el.auto_id }}">{{ el.name }} {{ el.code }}</option>
+                                    {% endfor %}
+                                </select>
+                                <br>
+                                <input type="submit" class="w-100 btn btn-lg btn-primary" value="Добавить автомобиль к заказу">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Чек
+{% endblock %}
+
+{% block html_body %}
+    <div class="container mt-5">
+        <h1>ЧЕК</h1><br>
+
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">{{ client.name }} {{ client.code }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                                <div class="col">
+                                    <p><b>Авто</b></p>
+                                </div>
+                                <div class="col">
+                                    <p><b>Код</b></p>
+                                </div>
+                                <div class="col">
+                                    <p><b>Цена</b></p>
+                                </div>
+                            </div>
+                            {% for auto in added_autos %}
+                                <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                                    <div class="col">
+                                        <p>{{ auto.name }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ auto.code }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ auto.price }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <p>Дата : {{ sale.sale_date }}</p>
+                            <p><b>Итого: {{ sale.sale_cost }}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
